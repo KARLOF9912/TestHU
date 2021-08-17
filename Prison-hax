@@ -6,7 +6,7 @@ local Tab = Window:NewTab("PRISON LIFE")
 
 local Section = Tab:NewSection("GUN")
 
-GUNSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
+Section:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
         local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
         local Event = game:GetService("Workspace").Remote.ItemHandler
         Event:InvokeServer(A_1)
@@ -14,7 +14,7 @@ GUNSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Reming
 
 local Section = Tab:NewSection("MOD")
 
-MODSection:NewButton("AK47 MOD", "AKHAX", function()
+Section:NewButton("AK47 MOD", "AKHAX", function()
     workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('AK-47', true).ITEMPICKUP)
 for i, v in next, debug.getregistry() do 
     if type(v) == "table" then 
