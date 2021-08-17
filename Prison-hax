@@ -1,0 +1,42 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("EXEOS HUB", "Synapse")
+
+local Tab = Window:NewTab("PRISON LIFE")
+
+
+local Section = Tab:NewSection("GUN")
+
+GUNSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
+        local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+        local Event = game:GetService("Workspace").Remote.ItemHandler
+        Event:InvokeServer(A_1)
+    end)
+
+
+GUNSection:NewButton("AK47 MOD", "AKHAX", function()
+    workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('AK-47', true).ITEMPICKUP)
+for i, v in next, debug.getregistry() do 
+    if type(v) == "table" then 
+        if v.Bullets then 
+            v.AutoFire = true
+            v.FireRate = 0
+            v.Bullets = 20
+            v.Range = math.huge
+            v.MaxAmmo = math.huge
+            v.CurrentAmmo = math.huge
+            v.StoredAmmo = math.huge
+        end
+    end
+end
+end)
+
+local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+ 
+    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+ 
+    PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
