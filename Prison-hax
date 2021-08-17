@@ -12,8 +12,9 @@ GUNSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Reming
         Event:InvokeServer(A_1)
     end)
 
+local Section = Tab:NewSection("MOD")
 
-GUNSection:NewButton("AK47 MOD", "AKHAX", function()
+MODSection:NewButton("AK47 MOD", "AKHAX", function()
     workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('AK-47', true).ITEMPICKUP)
 for i, v in next, debug.getregistry() do 
     if type(v) == "table" then 
